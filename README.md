@@ -6,7 +6,7 @@ Building an informative summary from logs is a real task that comes up very ofte
 
 ## Prerequirements
 This project requires Python 2.X (2.7.x is expected) and PostgreSQL 9.3 or latest version.
-[Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads) are required to run SQL database server and web app. You need to install them on your machine.
+[Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads) are required to run SQL database server and web app. [Download database](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip) to get report. You need to install them on your machine.
 
 ## How to run
 1. Download or clone repository on you machine.
