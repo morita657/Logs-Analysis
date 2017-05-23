@@ -23,9 +23,30 @@ This project is comprised of 3 files:
 - logs.py	 
 This file contains the implementation of internal reporting tool
 - newsdata.sql
-This file contains the table definition for the project
+This file contains the table and views definition for the project.
 - report.txt
 This file is the result of analyzed log data from the database
+
+## Commands
+The following SQL statements are to create views to answer the questions.
+To answer the question 2, execute following lines to create view.
+`CREATE VIEW viewer AS SELECT author, count(log.path) AS num \
+               FROM articles, log WHERE articles.slug = substring(path from \
+               10 for 100) GROUP BY author ORDER BY num DESC LIMIT 4;`
+This statements mean that "Create view to find relationships between authors and relevant logs".
+
+To answer the question 3, execute following 2 lines to create view.
+`CREATE OR REPLACE VIEW error AS SELECT \
+            to_char(time, 'Mon DD, YYYY') as date, \
+            count(status) AS err, status FROM log \
+            WHERE status = '404 NOT FOUND' GROUP BY date\
+            , status ORDER BY date ASC;`
+This statements mean that "Create view to count the number of 404 NOT FOUND status".
+
+`CREATE OR REPLACE VIEW total AS SELECT \
+            to_char(time, 'Mon DD, YYYY') as date, count(status) AS total\
+            FROM log GROUP BY date ORDER BY date ASC;`
+This statements mean that "Create view to count the number of all status".
 
 ## Code Quality
 [Here](https://google.github.io/styleguide/pyguide.html) is the Google Python Style Guide that I followed.
