@@ -1,7 +1,8 @@
+#!/usr/bin/env python
 #
 # Database access functions for the newsdata.
 #
-#! /usr/bin/env python
+
 import time
 import psycopg2
 
@@ -59,9 +60,9 @@ def error_status():
     results = cur.fetchall()
     for line in results:
         if line[1] >= 1:
-            print "more than 1%: ", str(line[1])[0:3]
+            print "more than 1%: ", str(line[1])[0:3], round(line[1], 2)
             f.write("{} - {}% errors\n".format(str(line[0]),
-                    str(line[1])[0:3]))
+                    round(line[1], 2)))
             print("-" * 70)
     db.close()
 popular_articles()
